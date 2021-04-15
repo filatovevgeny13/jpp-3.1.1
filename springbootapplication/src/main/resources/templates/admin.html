@@ -1,0 +1,51 @@
+<!DOCTYPE HTML>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Admin page</title>
+</head>
+<body>
+<div>
+    <h1>Admin page</h1>
+    <strong> You signed in as:</strong> <span th:text="${currentUser.email}"></span>
+    <a href="#" th:href="@{/logout}">Log Out</a>
+    <br>
+    <strong> Name: </strong> <span th:text="${currentUser.firstName}"></span>
+    <br>
+    <strong> Last name: </strong> <span th:text="${currentUser.lastName}"></span>
+    <br>
+    <h2>Users list</h2>
+    <table>
+        <tr>
+            <th>ID</th>
+            <th>Name</th>
+            <th>Surname</th>
+            <th>Email</th>
+            <th>Operations</th>
+        </tr>
+        <tr th:each="user : ${userList}">
+            <td th:utext="${user.id}"></td>
+            <td th:utext="${user.firstName}"></td>
+            <td th:utext="${user.lastName}"></td>
+            <td th:utext="${user.email}"></td>
+            <td>
+                <form th:method="GET" th:action="@{admin/user-update/{id}(id=${user.id})}">
+                    <input type="submit" value="Update">
+                </form>
+            </td>
+            <td>
+                <form th:method="DELETE" th:action="@{admin/user-delete/{id}(id=${user.id})}">
+                    <input type="submit" value="Delete">
+                </form>
+            </td>
+        </tr>
+    </table>
+    <br>
+    <form th:method="GET" th:action="@{admin/addUser}">
+        <input type="submit" value="Add user">
+    </form>
+    <br>
+    <br>
+</div>
+</body>
+</html>

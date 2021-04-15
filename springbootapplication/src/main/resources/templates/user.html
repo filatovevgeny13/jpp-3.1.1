@@ -1,0 +1,20 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>User page</title>
+</head>
+<body>
+<div>
+    <h1>User page</h1>
+    <strong> You signed in as:</strong> <span th:text="${currentUser.email}"></span>
+    <a href="#" th:href="@{/logout}">Log Out</a>
+    <br>
+    <strong> Name: </strong> <span th:text="${currentUser.firstName}"></span>
+    <br>
+    <strong> Last name: </strong> <span th:text="${currentUser.lastName}"></span>
+    <br>
+</div>
+</body>
+</html>

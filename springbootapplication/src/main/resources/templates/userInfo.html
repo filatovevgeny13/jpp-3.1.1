@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>User info</title>
+</head>
+<body>
+<div>
+    <h1>User info</h1>
+    <form th:method="POST" th:action="@{/admin/saveUser}" th:object="${user}">
+        <p>Name: <input type="text" th:field="*{firstName}" /></p>
+        <p>Surname: <input type="text" th:field="*{lastName}" /></p>
+        <p>Email: <input type="text" th:field="*{email}" /></p>
+        <p>Password: <input type="text" th:field="*{password}" /></p>
+        <p>isActive: <input type="checkbox" name="Active" value="true" ></p>
+        <p>Roles:
+            <input type="checkbox" name="isAdmin" value="true" /> Admin
+            <input type="checkbox" name="isUser" value="true" /> User
+        </p>
+        <p><input type="submit" value="Submit" /> <input type="reset" value="Reset" /></p>
+    </form>
+</div>
+</body>
+</html>
